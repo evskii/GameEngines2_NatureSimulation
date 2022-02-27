@@ -11,6 +11,11 @@ The final submission will be a Planet Earth style video where you get a look at 
 - Predator and Prey system.
 - POIs for animals to congregatae around.
 
+## Progress:
+- Created the base project.
+- Imported 3D models for a small selection of animals.
+- Created a movement script using Seek, Arrive and Path Following.
+
 ## Final Video Storyboard:
 The video idea I have is a Planet Earth style documentary where there are scenes displaying animal interactions in different ways as if recorded for an episode of the show.  
 ### Sample Shots:
