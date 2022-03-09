@@ -160,7 +160,7 @@ Transform:
   - {fileID: 486786060}
   - {fileID: 1350233029}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &48735413
 MonoBehaviour:
@@ -593,41 +593,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1445085125}
-  - component: {fileID: 1445085124}
+  - component: {fileID: 1445085126}
+  - component: {fileID: 1445085127}
+  - component: {fileID: 1445085128}
   m_Layer: 0
-  m_Name: Animal_Default
+  m_Name: Animal_Deer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1445085124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1445085123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9699621d02b49b746bae32270b3fb793, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravity: -9.81
-  groundCheckRadius: 0.05
-  speed: 0
-  mass: 1
-  maxSpeed: 5
-  currentState: 1
-  seekTarget: {fileID: 1581859895}
-  slowingDistance: 5
-  arriveTargetTransform: {fileID: 1581859895}
-  currentPath: {fileID: 48735413}
-  nextWaypointDistance: 5
-  acceleration: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  force: {x: 0, y: 0, z: 0}
-  isGrounded: 0
 --- !u!4 &1445085125
 Transform:
   m_ObjectHideFlags: 0
@@ -642,8 +617,58 @@ Transform:
   m_Children:
   - {fileID: 1681391406}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1445085126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445085123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d50fb4c6ca9d57429cb8700d1c38ba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravity: -9.81
+  groundCheckRadius: 0.025
+  speed: 0
+  mass: 1
+  maxSpeed: 5
+  seekTarget: {fileID: 0}
+  slowingDistance: 5
+  acceleration: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  force: {x: 0, y: 0, z: 0}
+  isGrounded: 0
+  currentState: {fileID: 0}
+  previousState: {fileID: 0}
+--- !u!114 &1445085127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445085123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d5c66423fe1b8545a83f0b441dbbd24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1445085128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445085123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67dd3fae831c2a04b88cf278e45b881d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arriveDistance: 3
 --- !u!1 &1529875547
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,12 +755,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581859894}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.93, y: 1.0154265, z: 15.07}
+  m_LocalPosition: {x: 1.4, y: -0.03, z: 29.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1605585975
 GameObject:
