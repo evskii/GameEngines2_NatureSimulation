@@ -1,0 +1,136 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+using UnityEngine;
+
+public class Animal : MonoBehaviour
+{
+    //Movement code
+	[Header("Movement Settings")]
+    [SerializeField] private float speed;
+    private float mass = 1;
+    public float maxSpeed = 10;
+    public bool move = true;
+    public Transform currentTarget;
+    public float maxForce = 10f;
+    private List<SteeringBehaviour> movementBehaviours = new List<SteeringBehaviour>();
+    public Food.FoodType favouredFood;
+
+    [Header("Stats")]
+    public float health = 100;
+    private bool hurt;
+    
+    public float hunger = 100;
+    private bool hungry;
+    
+    public float thirst = 100;
+    private bool thirsty;
+    
+    [Header("Status/Current Information")]
+    [SerializeField] private Vector3 acceleration;
+    public Vector3 velocity;
+    [SerializeField] private Vector3 force;
+
+    private void Awake() {
+        movementBehaviours = GetComponents<SteeringBehaviour>().ToList();
+    }
+
+    private void Start() {
+        StateMachine(GetComponent<Behaviour_LookForFood>());
+
+        StartCoroutine(DecayStats());
+    }
+
+    public void Move() {
+        force = Calculate();
+
+        acceleration = force / mass;
+        velocity += acceleration * Time.deltaTime;
+        
+        transform.position += velocity * Time.deltaTime;
+
+        speed = velocity.magnitude;
+        if (speed > 0) {
+            transform.forward = velocity;
+        }
+    }
+    Vector3 Calculate() {
+        force = Vector3.zero;
+
+        foreach(SteeringBehaviour b in movementBehaviours) {
+            if (b.isActiveAndEnabled) {
+                force += b.Calculate() * b.weight;
+                float f = force.magnitude;
+                if (f > maxForce) {
+                    force = Vector3.ClampMagnitude(force, maxForce);
+                    break;
+                }
+            }
+        }
+        return force;
+    }
+
+
+    private void Update() {
+        if (move) {
+            Move();
+        }
+
+        if (currentState != null) {
+            currentState.Think();
+        }
+        
+        AnalyzeStats();
+    }
+    
+    //Check stats to see if we need food
+    public void AnalyzeStats() {
+        //Assign bool values 
+        hungry = hunger < 33;
+        thirsty = thirst < 33;
+        hurt = health < 50;
+        
+        //Lower stats over time
+        
+        //Decide which states to enter
+        if (hungry) {
+            //Change to looking for food
+            return;
+        }
+        if (thirsty) {
+            //Change to looking for water
+            return;
+        }
+    }
+
+    //State machine bits
+    [SerializeField] private BehaviourState currentState;
+    [SerializeField] private BehaviourState previousState;
+    
+    public void StateMachine(BehaviourState newState) {
+        if (currentState != null) {
+            currentState.Exit();
+        }
+
+        previousState = currentState;
+        currentState = newState;
+        
+        currentState.Enter();
+    }
+
+    [Header("Decay Settings")]
+    [SerializeField] private float decayAmt;
+    [SerializeField] private float decayDelay;
+    [SerializeField] private float decayMulti;
+    private Coroutine decayCor;
+    
+    //IEnumerator used for decaying the stats of the animal
+    private IEnumerator DecayStats() {
+        yield return new WaitForSeconds(decayDelay);
+        hunger -= decayAmt * decayMulti;
+        thirst -= decayAmt * decayMulti;
+        decayCor = StartCoroutine(DecayStats());
+    }
+}

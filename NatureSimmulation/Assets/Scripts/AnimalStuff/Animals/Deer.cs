@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Predator : Animal
+public class Deer : Animal
 {
-	private Animal prey;
-
-	public abstract void Attack();
-
+	
+	
 }
