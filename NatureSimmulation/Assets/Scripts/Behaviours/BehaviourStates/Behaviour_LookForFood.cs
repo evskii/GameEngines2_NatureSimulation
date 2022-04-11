@@ -8,6 +8,7 @@ using UnityEngine;
 public class Behaviour_LookForFood : BehaviourState
 {
     private List<Food> allFood = new List<Food>();
+    private Food foodFinding;
     
     public override void Enter() {
         Debug.Log("Enter LookForFood");
@@ -28,19 +29,21 @@ public class Behaviour_LookForFood : BehaviourState
                 closestFood = food;
             }
         }
+        foodFinding = closestFood;
         animal.currentTarget = closestFood.transform;
         animal.move = true;
     }
 
-    public float eatingDistance = 0.5f;
     public override void Think() {
         //Check if we have reacheed the food and transition to eating
-        if (Vector3.Distance(transform.position, animal.currentTarget.position) <= eatingDistance) {
-            animal.StateMachine(GetComponent<Behaviour_Idle>());
+        if (Vector3.Distance(transform.position, animal.currentTarget.position) <= foodFinding.feedRadius) {
+            foodFinding.Entering(animal);
+            animal.StateMachine(GetComponent<Behaviour_Consuming>());
         }
     }
     public override void Exit() {
         //IDK
+        foodFinding.Entering(animal);
         allFood.Clear();
     }
 

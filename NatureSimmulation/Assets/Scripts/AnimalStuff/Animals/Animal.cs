@@ -32,6 +32,10 @@ public class Animal : MonoBehaviour
     [SerializeField] private Vector3 acceleration;
     public Vector3 velocity;
     [SerializeField] private Vector3 force;
+    
+    //State machine bits
+    [SerializeField] private BehaviourState currentState;
+    [SerializeField] private BehaviourState previousState;
 
     private void Awake() {
         movementBehaviours = GetComponents<SteeringBehaviour>().ToList();
@@ -82,7 +86,7 @@ public class Animal : MonoBehaviour
             currentState.Think();
         }
         
-        AnalyzeStats();
+        
     }
     
     //Check stats to see if we need food
@@ -105,9 +109,17 @@ public class Animal : MonoBehaviour
         }
     }
 
-    //State machine bits
-    [SerializeField] private BehaviourState currentState;
-    [SerializeField] private BehaviourState previousState;
+    public void Eating(float amt) {
+        hunger += amt;
+        hunger = Mathf.Clamp(hunger, 0, 100);
+    }
+
+    public void Drinking(float amt) {
+        thirst += amt;
+        thirst = Mathf.Clamp(thirst, 0, 100);
+    }
+
+    
     
     public void StateMachine(BehaviourState newState) {
         if (currentState != null) {
@@ -132,5 +144,14 @@ public class Animal : MonoBehaviour
         hunger -= decayAmt * decayMulti;
         thirst -= decayAmt * decayMulti;
         decayCor = StartCoroutine(DecayStats());
+        AnalyzeStats();
+    }
+
+    public void ToggleDecay(bool decay) {
+        if (decay) {
+            decayCor = StartCoroutine(DecayStats());
+        } else {
+            StopCoroutine(decayCor);
+        }
     }
 }

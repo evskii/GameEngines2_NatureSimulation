@@ -524,6 +524,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodType: 0
+  feedRadius: 2.5
+  feedRate: 0.01
 --- !u!4 &613138836
 Transform:
   m_ObjectHideFlags: 0
@@ -532,12 +534,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613138834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 32.9, y: 0, z: 32.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 652111803}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &650484326
 GameObject:
@@ -639,17 +641,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652111802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32.8, y: 0, z: 31}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 613138836}
-  - {fileID: 2120273209}
-  - {fileID: 1071246677}
-  - {fileID: 1865562465}
-  - {fileID: 1435843000}
-  - {fileID: 1459806018}
-  - {fileID: 699343498}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -683,6 +678,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodType: 1
+  feedRadius: 2.5
+  feedRate: 0.01
 --- !u!4 &699343498
 Transform:
   m_ObjectHideFlags: 0
@@ -691,12 +688,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 699343496}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.299999, y: 0, z: -38.4}
+  m_LocalPosition: {x: 26.600002, y: 0, z: -5.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 652111803}
-  m_RootOrder: 6
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -1019,6 +1016,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodType: 0
+  feedRadius: 2.5
+  feedRate: 0.01
 --- !u!4 &1071246677
 Transform:
   m_ObjectHideFlags: 0
@@ -1027,12 +1026,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071246675}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.9, y: 0, z: -55.8}
+  m_LocalPosition: {x: 22, y: 0, z: -22.899998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 652111803}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1081465390
 GameObject:
@@ -1376,6 +1375,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodType: 1
+  feedRadius: 2.5
+  feedRate: 0.01
 --- !u!4 &1435843000
 Transform:
   m_ObjectHideFlags: 0
@@ -1384,12 +1385,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435842998}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.1, y: 0, z: -34}
+  m_LocalPosition: {x: -8.199997, y: 0, z: -1.0999985}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 652111803}
-  m_RootOrder: 4
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1445085123
 GameObject:
@@ -1500,6 +1501,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodType: 1
+  feedRadius: 2.5
+  feedRate: 0.01
 --- !u!4 &1459806018
 Transform:
   m_ObjectHideFlags: 0
@@ -1508,12 +1511,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459806016}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -47.3, y: 0, z: -17.7}
+  m_LocalPosition: {x: -14.399998, y: 0, z: 15.200001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 652111803}
-  m_RootOrder: 5
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1472334319
 GameObject:
@@ -2156,6 +2159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodType: 0
+  feedRadius: 2.5
+  feedRate: 0.01
 --- !u!4 &1865562465
 Transform:
   m_ObjectHideFlags: 0
@@ -2164,12 +2169,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865562463}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -74.7, y: 0, z: -66.4}
+  m_LocalPosition: {x: -41.799995, y: 0, z: -33.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 652111803}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1882143259
 GameObject:
@@ -2185,6 +2190,8 @@ GameObject:
   - component: {fileID: 1882143265}
   - component: {fileID: 1882143263}
   - component: {fileID: 1882143264}
+  - component: {fileID: 1882143266}
+  - component: {fileID: 1882143267}
   m_Layer: 0
   m_Name: Animal_Deer
   m_TagString: Untagged
@@ -2227,8 +2234,8 @@ MonoBehaviour:
   maxForce: 10
   favouredFood: 0
   health: 100
-  hunger: 100
-  thirst: 100
+  hunger: 80
+  thirst: 80
   acceleration: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   force: {x: 0, y: 0, z: 0}
@@ -2280,7 +2287,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animal: {fileID: 0}
-  eatingDistance: 0.5
 --- !u!114 &1882143265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2299,6 +2305,32 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0, z: 0}
   slowingDistance: 10
   decelleration: 5
+--- !u!114 &1882143266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882143259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73bd6597870ef0444bb7bf64c443337a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: {fileID: 0}
+--- !u!114 &1882143267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882143259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3e2405a3a208b74e88cef2e23ecd271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: {fileID: 0}
 --- !u!1 &1945943776
 GameObject:
   m_ObjectHideFlags: 0
@@ -2742,6 +2774,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodType: 0
+  feedRadius: 2.5
+  feedRate: 0.01
 --- !u!4 &2120273209
 Transform:
   m_ObjectHideFlags: 0
@@ -2750,10 +2784,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120273207}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -42.699997, y: 0, z: -6.1000004}
+  m_LocalPosition: {x: -9.799995, y: 0, z: 26.800001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 652111803}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
