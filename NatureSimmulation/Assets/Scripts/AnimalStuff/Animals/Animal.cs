@@ -42,7 +42,7 @@ public class Animal : MonoBehaviour
     }
 
     private void Start() {
-        StateMachine(GetComponent<Behaviour_LookForFood>());
+        StateMachine(GetComponent<Behaviour_Wander>());
 
         StartCoroutine(DecayStats());
     }

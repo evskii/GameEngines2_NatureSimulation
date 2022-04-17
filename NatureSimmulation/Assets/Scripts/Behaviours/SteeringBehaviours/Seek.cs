@@ -15,6 +15,13 @@ public class Seek : SteeringBehaviour
         return desired - animal.velocity;
     }
 
+    public Vector3 SeekForce(Vector3 target) {
+        Vector3 desired = target - transform.position;
+        desired.Normalize();
+        desired *= animal.maxSpeed;
+        return desired - animal.velocity;
+    }
+
     public void Update() {
         if (animal.currentTarget != null) {
             target = animal.currentTarget.position;
