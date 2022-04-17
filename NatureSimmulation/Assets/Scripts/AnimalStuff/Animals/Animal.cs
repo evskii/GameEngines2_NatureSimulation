@@ -17,6 +17,7 @@ public class Animal : MonoBehaviour
     public float maxForce = 10f;
     private List<SteeringBehaviour> movementBehaviours = new List<SteeringBehaviour>();
     public Food.FoodType favouredFood;
+    public float attackStrength;
 
     [Header("Stats")]
     public float health = 100;
@@ -41,10 +42,15 @@ public class Animal : MonoBehaviour
         movementBehaviours = GetComponents<SteeringBehaviour>().ToList();
     }
 
-    private void Start() {
+    public void Init() {
         StateMachine(GetComponent<Behaviour_Wander>());
+       
 
         StartCoroutine(DecayStats());
+    }
+
+    public void Start() {
+        Init();
     }
 
     public void Move() {
@@ -60,6 +66,7 @@ public class Animal : MonoBehaviour
             transform.forward = velocity;
         }
     }
+    
     Vector3 Calculate() {
         force = Vector3.zero;
 
@@ -85,8 +92,6 @@ public class Animal : MonoBehaviour
         if (currentState != null) {
             currentState.Think();
         }
-        
-        
     }
     
     //Check stats to see if we need food
@@ -96,16 +101,23 @@ public class Animal : MonoBehaviour
         thirsty = thirst < 33;
         hurt = health < 50;
         
-        //Lower stats over time
-        
         //Decide which states to enter
-        if (hungry) {
+        if (hungry && !(currentState == GetComponent<Behaviour_LookForFood>() || currentState == GetComponent<Behaviour_Hunting>())) {
             //Change to looking for food
+            if (favouredFood == Food.FoodType.Animal) {
+                StateMachine(GetComponent<Behaviour_Hunting>());   
+            } else {
+                StateMachine(GetComponent<Behaviour_LookForFood>());
+            }
             return;
         }
-        if (thirsty) {
+        if (thirsty && currentState != GetComponent<Behaviour_LookForWater>()) {
             //Change to looking for water
+            StateMachine(GetComponent<Behaviour_LookForWater>());
             return;
+        }
+        if (health <= 0 && currentState != GetComponent<Behaviour_Die>()) {
+            StateMachine(GetComponent<Behaviour_Die>());
         }
     }
 
@@ -134,8 +146,8 @@ public class Animal : MonoBehaviour
 
     [Header("Decay Settings")]
     [SerializeField] private float decayAmt;
-    [SerializeField] private float decayDelay;
-    [SerializeField] private float decayMulti;
+    public  float decayDelay;
+    public float decayMulti;
     private Coroutine decayCor;
     
     //IEnumerator used for decaying the stats of the animal
@@ -153,5 +165,11 @@ public class Animal : MonoBehaviour
         } else {
             StopCoroutine(decayCor);
         }
+    }
+
+    public void TakeDamage(float amt) {
+        Debug.Log("TAKE DAMAGE");
+        health -= amt;
+        AnalyzeStats();
     }
 }

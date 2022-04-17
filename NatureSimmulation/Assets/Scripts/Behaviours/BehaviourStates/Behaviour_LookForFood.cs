@@ -11,11 +11,14 @@ public class Behaviour_LookForFood : BehaviourState
     private Food foodFinding;
     
     public override void Enter() {
-        Debug.Log("Enter LookForFood");
+        // Debug.Log("Enter LookForFood");
         //Find the closest type of food and set target
         allFood = FindObjectsOfType<Food>().ToList();
         Food closestFood = null;
         foreach (var food in allFood) {
+            if (food.foodType != animal.favouredFood) {
+                continue;
+            }
             if (closestFood != null) {
                 if (food.foodType == animal.favouredFood) {
                        var distToNew = Vector3.Distance(transform.position, food.transform.position);
@@ -29,9 +32,16 @@ public class Behaviour_LookForFood : BehaviourState
                 closestFood = food;
             }
         }
-        foodFinding = closestFood;
-        animal.currentTarget = closestFood.transform;
-        animal.move = true;
+        
+
+        if (closestFood == null) {
+            Debug.Log("I CANNAE FIND SCRAN");
+            animal.StateMachine(GetComponent<Behaviour_Wander>());
+        } else {
+            foodFinding = closestFood;
+            animal.currentTarget = closestFood.transform;
+            animal.move = true;
+        }
     }
 
     public override void Think() {
@@ -43,24 +53,11 @@ public class Behaviour_LookForFood : BehaviourState
     }
     public override void Exit() {
         //IDK
-        foodFinding.Entering(animal);
+        if (foodFinding != null) {
+            foodFinding.Entering(animal);
+        }
         allFood.Clear();
     }
 
-    private void OnDrawGizmos() {
-        //Display all food
-        if (allFood.Count > 0) {
-            foreach (var food in allFood) {
-                if (food.foodType == Food.FoodType.Grass) {
-                    Gizmos.color = Color.green;
-                }else if (food.foodType == Food.FoodType.Tree) {
-                    Gizmos.color = Color.grey;
-                } else {
-                    Gizmos.color = Color.magenta;
-                }
-                Gizmos.DrawSphere(food.transform.position, 1f);
-            }
-        }
-        
-    }
+    
 }

@@ -29,7 +29,7 @@ public class Arrive: SteeringBehaviour
         Vector3 desired;
         
         if (distance < slowingDistance) {
-            Debug.Log("Slowing");
+            // Debug.Log("Slowing");
             desired = animal.maxSpeed * (distance / slowingDistance) * (toTarget / distance);
             currentDecelleration = decelleration;
         } else {

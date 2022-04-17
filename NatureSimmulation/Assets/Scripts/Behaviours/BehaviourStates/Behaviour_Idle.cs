@@ -7,6 +7,7 @@ public class Behaviour_Idle : BehaviourState
 	public override void Enter() {
 		animal.currentTarget = null;
 		animal.move = false;
+		animal.ToggleDecay(false);
 	}
 	public override void Think() {
 		
@@ -16,6 +17,7 @@ public class Behaviour_Idle : BehaviourState
 		if (animal != null) {
 			animal.move = true;
 		}
+		animal.ToggleDecay(true);
 		
 	}
 }

@@ -15,6 +15,8 @@ public class Behaviour_Wander : BehaviourState
     public override void Enter() {
         //Set wander to go
         animal.move = true;
+        animal.ToggleDecay(true);
+        
         //SET  A NEW TRANSFORM TARGET INSTEAD OF REASSIGNING
         wanderTarget = new GameObject();
         wanderTarget.name = "WanderTarget";
@@ -36,7 +38,7 @@ public class Behaviour_Wander : BehaviourState
     public override void Exit() {
         //Leave wander
         GetComponent<Arrive>().enabled = true;
-
+        Destroy(wanderTarget);
     }
     
     //TODO - Make it pick a random position in a viewcone of the animal so they always move relatively forward

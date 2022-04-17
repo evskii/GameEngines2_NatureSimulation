@@ -22,8 +22,8 @@ public class NoiseWander : SteeringBehaviour
         if (Application.isPlaying && isActiveAndEnabled) {
             Vector3 localCp = (Vector3.forward * distance);
             Vector3 worldCP = transform.TransformPoint(localCp);
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(worldCP, radius);
+            // Gizmos.color = Color.green;
+            // Gizmos.DrawWireSphere(worldCP, radius);
             Gizmos.color = Color.magenta;
             Gizmos.DrawLine(transform.position, worldTarget);
         }
