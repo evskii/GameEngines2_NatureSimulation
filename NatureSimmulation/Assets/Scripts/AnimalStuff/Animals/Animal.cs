@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 using UnityEngine;
@@ -8,7 +9,7 @@ using UnityEngine;
 public class Animal : MonoBehaviour
 {
     //Movement code
-	[Header("Movement Settings")]
+	[Header("Animal Settings")]
     [SerializeField] private float speed;
     private float mass = 1;
     public float maxSpeed = 10;
@@ -18,6 +19,13 @@ public class Animal : MonoBehaviour
     private List<SteeringBehaviour> movementBehaviours = new List<SteeringBehaviour>();
     public Food.FoodType favouredFood;
     public float attackStrength;
+    //grouping settings
+    public bool groupingAnimal = false;
+    private float currentLoneliness;
+    public float lonelinessDecayMulti;
+    [HideInInspector] public float maxLoneliness = 100;
+    [HideInInspector] public float groupFindRange = 20;
+    
 
     [Header("Stats")]
     public float health = 100;
@@ -100,7 +108,7 @@ public class Animal : MonoBehaviour
         hungry = hunger < 33;
         thirsty = thirst < 33;
         hurt = health < 50;
-        
+
         //Decide which states to enter
         if (hungry && !(currentState == GetComponent<Behaviour_LookForFood>() || currentState == GetComponent<Behaviour_Hunting>())) {
             //Change to looking for food
@@ -118,6 +126,11 @@ public class Animal : MonoBehaviour
         }
         if (health <= 0 && currentState != GetComponent<Behaviour_Die>()) {
             StateMachine(GetComponent<Behaviour_Die>());
+        }
+
+        if (currentLoneliness <= maxLoneliness * 0.25f && groupingAnimal) {
+            //Enter looking for group stuff 
+            StateMachine(GetComponent<Behaviour_LookingForGroup>());
         }
     }
 
@@ -147,14 +160,16 @@ public class Animal : MonoBehaviour
     [Header("Decay Settings")]
     [SerializeField] private float decayAmt;
     public  float decayDelay;
-    public float decayMulti;
+    public float hungerDecayMulti;
+    public float thirstDecayMulti;
     private Coroutine decayCor;
     
     //IEnumerator used for decaying the stats of the animal
     private IEnumerator DecayStats() {
         yield return new WaitForSeconds(decayDelay);
-        hunger -= decayAmt * decayMulti;
-        thirst -= decayAmt * decayMulti;
+        hunger -= decayAmt * hungerDecayMulti;
+        thirst -= decayAmt * thirstDecayMulti;
+        currentLoneliness -= decayAmt * lonelinessDecayMulti;
         decayCor = StartCoroutine(DecayStats());
         AnalyzeStats();
     }
