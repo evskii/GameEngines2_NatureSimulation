@@ -44,7 +44,7 @@ public class Behaviour_Hunting : BehaviourState
 		animal.maxSpeed = newMaxSpeed;
 		
 		//Assigns our target to be the closest animal to us
-		var allAnimals = FindObjectsOfType<Animal>().ToList();
+		var allAnimals = FindObjectsOfType<Animal>().Where(animal1 => animal1.animalSize < animal.animalSize).ToList();
 		Animal closestAnimal = null;
 		foreach (var animal in allAnimals) {
 			if (animal == GetComponent<Animal>()) {

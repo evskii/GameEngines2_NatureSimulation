@@ -67,11 +67,11 @@ public class Behaviour_LookingForGroup : BehaviourState
 		groupToJoin = null;
 	}
 
-	private void OnDrawGizmos() {
-		Gizmos.color = Color.green;
-		if (animal != null) {
-			Gizmos.DrawWireSphere(transform.position, animal.groupFindRange);
-		}
-		
-	}
+	// private void OnDrawGizmos() {
+	// 	Gizmos.color = Color.green;
+	// 	if (animal != null) {
+	// 		Gizmos.DrawWireSphere(transform.position, animal.groupFindRange);
+	// 	}
+	// 	
+	// }
 }

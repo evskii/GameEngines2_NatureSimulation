@@ -17,6 +17,9 @@ public class TerrainGenerator : MonoBehaviour
     public int zSize = 20;
     public float heightMulitplier = 2f;
 
+    public float xOffset = 0.3f;
+    public float zOffset = 0.3f;
+
     public Color borderColor;
     
     void Start() {
@@ -39,7 +42,7 @@ public class TerrainGenerator : MonoBehaviour
 
         for (int i = 0, z =0; z<= zSize; z++) {
             for (int x = 0; x<=xSize; x++) {
-                float y = Mathf.PerlinNoise(x * .3f, z * .3f) * heightMulitplier;
+                float y = Mathf.PerlinNoise(x * xOffset, z * zOffset) * heightMulitplier;
                 
                 // if (x == xSize || x == 0 ||z == zSize || z == 0) { //On border set height to 0 so we have a joining point
                 //     y = 0;
@@ -90,14 +93,11 @@ public class TerrainGenerator : MonoBehaviour
         mesh.vertices = vertices;
         mesh.triangles = triangles;
         mesh.RecalculateNormals();
-        // optionally, add a mesh collider (As suggested by Franku Kek via Youtube comments).
-        // To use this, your MeshGenerator GameObject needs to have a mesh collider
-        // component added to it.  Then, just re-enable the code below.
-        /*
+        
         mesh.RecalculateBounds();
         MeshCollider meshCollider = gameObject.GetComponent<MeshCollider>();
         meshCollider.sharedMesh = mesh;
-        //*/
+        
     }
 
     private void OnDrawGizmos() {

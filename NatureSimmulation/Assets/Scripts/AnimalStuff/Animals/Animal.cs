@@ -18,16 +18,19 @@ public class Animal : MonoBehaviour
     public float maxForce = 10f;
     private List<SteeringBehaviour> movementBehaviours = new List<SteeringBehaviour>();
     public Food.FoodType favouredFood;
+    public int animalSize;
     public float attackStrength;
+    
+    
+
+    [Header("Stats")]
     //grouping settings
     public bool groupingAnimal = false;
-    private float currentLoneliness;
+    public float currentLoneliness;
     public float lonelinessDecayMulti;
     [HideInInspector] public float maxLoneliness = 100;
     [HideInInspector] public float groupFindRange = 20;
     
-
-    [Header("Stats")]
     public float health = 100;
     private bool hurt;
     
@@ -105,12 +108,14 @@ public class Animal : MonoBehaviour
     //Check stats to see if we need food
     public void AnalyzeStats() {
         //Assign bool values 
-        hungry = hunger < 33;
-        thirsty = thirst < 33;
+        if (currentState != GetComponent<Behaviour_Consuming>() && currentState != GetComponent<Behaviour_Drinking>()) {
+            hungry = hunger < 33;
+            thirsty = thirst < 33;
+        }
         hurt = health < 50;
 
         //Decide which states to enter
-        if (hungry && !(currentState == GetComponent<Behaviour_LookForFood>() || currentState == GetComponent<Behaviour_Hunting>())) {
+        if (hungry && !(currentState == GetComponent<Behaviour_LookForFood>() && currentState == GetComponent<Behaviour_Hunting>())) {
             //Change to looking for food
             if (favouredFood == Food.FoodType.Animal) {
                 StateMachine(GetComponent<Behaviour_Hunting>());   
@@ -119,6 +124,7 @@ public class Animal : MonoBehaviour
             }
             return;
         }
+        
         if (thirsty && currentState != GetComponent<Behaviour_LookForWater>()) {
             //Change to looking for water
             StateMachine(GetComponent<Behaviour_LookForWater>());

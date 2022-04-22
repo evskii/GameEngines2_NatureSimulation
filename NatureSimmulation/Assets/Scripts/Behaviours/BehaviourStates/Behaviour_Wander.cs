@@ -43,18 +43,22 @@ public class Behaviour_Wander : BehaviourState
     
     //TODO - Make it pick a random position in a viewcone of the animal so they always move relatively forward
 
-    private Transform GetRandomTransform(float minDistance, float maxDistance) {
-        var x = Random.Range(transform.position.x + minDistance, transform.position.x + maxDistance);
-        var z = Random.Range(transform.position.z + minDistance, transform.position.z + maxDistance);
-        GameObject newObj = new GameObject();
-        newObj.transform.position = new Vector3(x, transform.position.y, z);
-        return newObj.transform;
-    }
 
     private Vector3 GetRandomPosition(float minDistance, float maxDistance) {
         var x = Random.Range(transform.position.x + minDistance, transform.position.x + maxDistance);
         var z = Random.Range(transform.position.z + minDistance, transform.position.z + maxDistance);
-        return new Vector3(x, transform.position.y, z);
+        var rawPos = new Vector3(x, transform.position.y, z);
+        var finalPos = Vector3.zero;
+        //Raycast to make sure its not under ground
+        var raycastPos = new Vector3(rawPos.x, rawPos.y + 100, rawPos.z);
+        RaycastHit hit;
+        if (Physics.Raycast(raycastPos, Vector3.down, out hit, Mathf.Infinity)) {
+            finalPos = hit.point;
+        } else {
+            finalPos = rawPos;
+        }
+        
+        return finalPos;
     }
 
     private void OnDrawGizmos() {
