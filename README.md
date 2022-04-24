@@ -33,5 +33,5 @@ The video idea I have is a Planet Earth style documentary where there are scenes
 | ![POV](https://user-images.githubusercontent.com/55562147/155888228-c800d242-e396-44b1-b809-63e2cd29acac.jpg) | The thirtd shot idea I have is from the POV of one of the animals. This doesn't massively fit the Planet Earth documentary idea but I think it would be an interesting shot. |
 
 ## References:
-Wild Animals: https://free-game-assets.itch.io/free-wild-animal-3d-low-poly-models
+Wild Animals: https://free-game-assets.itch.io/free-wild-animal-3d-low-poly-models  
 Environment Assets: https://www.kenney.nl/assets/nature-kit
