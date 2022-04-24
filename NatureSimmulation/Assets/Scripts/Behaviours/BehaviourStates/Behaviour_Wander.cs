@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
+using JetBrains.Annotations;
+
 using UnityEngine;
 
 using Random = UnityEngine.Random;
@@ -13,37 +16,30 @@ public class Behaviour_Wander : BehaviourState
     private GameObject wanderTarget;
     
     public override void Enter() {
-        //Set wander to go
         animal.move = true;
         animal.ToggleDecay(true);
         
-        //SET  A NEW TRANSFORM TARGET INSTEAD OF REASSIGNING
         wanderTarget = new GameObject();
         wanderTarget.name = "WanderTarget";
         wanderTarget.transform.position = GetRandomPosition(-40, 40);
         animal.currentTarget = wanderTarget.transform;
 
-        GetComponent<Arrive>().enabled = false;
-
+        GetComponent<Arrive>().enabled = false; //disable arrive so we have a continuous smooth movement
     }
     public override void Think() {
-        //Update what to do while wandering
-        
         //When we get to our target, find a new one
         if (Vector3.Distance(transform.position, animal.currentTarget.position) < changeDirectionDistance) {
-            wanderTarget.transform.position = GetRandomPosition(-40, 40);
+            var finalPos = GetRandomPosition(-40, 40);
+            var temp = FindObjectOfType<AnimalSpawner>();
+            wanderTarget.transform.position = finalPos;
         }
         
     }
     public override void Exit() {
-        //Leave wander
         GetComponent<Arrive>().enabled = true;
         Destroy(wanderTarget);
     }
     
-    //TODO - Make it pick a random position in a viewcone of the animal so they always move relatively forward
-
-
     private Vector3 GetRandomPosition(float minDistance, float maxDistance) {
         var x = Random.Range(transform.position.x + minDistance, transform.position.x + maxDistance);
         var z = Random.Range(transform.position.z + minDistance, transform.position.z + maxDistance);
@@ -57,7 +53,7 @@ public class Behaviour_Wander : BehaviourState
         } else {
             finalPos = rawPos;
         }
-        
+
         return finalPos;
     }
 

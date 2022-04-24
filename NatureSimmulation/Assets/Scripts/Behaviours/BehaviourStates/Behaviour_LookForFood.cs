@@ -8,7 +8,7 @@ using UnityEngine;
 public class Behaviour_LookForFood : BehaviourState
 {
     private List<Food> allFood = new List<Food>();
-    private Food foodFinding;
+    public Food foodFinding;
     
     public override void Enter() {
         // Debug.Log("Enter LookForFood");

@@ -5,6 +5,8 @@ using System.Threading;
 
 using UnityEngine;
 
+using Random = UnityEngine.Random;
+
 public class Food : MonoBehaviour
 {
     public enum FoodType {
@@ -20,11 +22,13 @@ public class Food : MonoBehaviour
     private List<Animal> animalsInArea = new List<Animal>();
     private List<Animal> animalsToRemove = new List<Animal>();
 
+    public GameObject[] models;
+
     private void Start() {
-        // //Create collider to get animals in area
-        // var newSphereCol = gameObject.AddComponent<SphereCollider>();
-        // newSphereCol.radius = feedRadius;
-        // newSphereCol.isTrigger = true;
+
+        if (models != null) {
+            Instantiate(models[Random.Range(0, models.Length)], transform);
+        }
     }
     
     
@@ -57,24 +61,6 @@ public class Food : MonoBehaviour
         animalsInArea.Remove(aniamlExiting);
         Debug.Log("ANIMAL LEAVE");
     }
-
-    // private void OnTriggerEnter(Collider other) {
-    //     if(other.TryGetComponent(out Animal animal)) {
-    //         if (animal.favouredFood == foodType) {
-    //             animalsInArea.Add(animal);
-    //             Debug.Log("ANIMAL ENTER");
-    //         }
-    //     }
-    // }
-    //
-    // private void OnTriggerExit(Collider other) {
-    //     if(other.TryGetComponent(out Animal animal)) {
-    //         if (animalsInArea.Contains(animal)) {
-    //             animalsInArea.Remove(animal);
-    //             Debug.Log("ANIMAL LEAVE");
-    //         }
-    //     }
-    // }
 
     private void OnDrawGizmos() {
         if (foodType == FoodType.Animal) {

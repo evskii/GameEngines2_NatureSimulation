@@ -12,8 +12,9 @@ public class StatUIHandler : MonoBehaviour
     [SerializeField] private Slider hungerSlider;
     [SerializeField] private Slider thirstSlider;
 
-    private void Start() {
+    private void Awake() {
         animal = GetComponentInParent<Animal>();
+        canvas = gameObject;
     }
 
     private void Update() {
@@ -23,5 +24,10 @@ public class StatUIHandler : MonoBehaviour
             thirstSlider.value = animal.thirst;
             hungerSlider.value = animal.hunger;
         }
+    }
+
+    public GameObject canvas;
+    public void HideStats() {
+        canvas.SetActive(false);
     }
 }

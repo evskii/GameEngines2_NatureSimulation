@@ -9,7 +9,7 @@ using UnityEngine;
 public class Behaviour_LookForWater : BehaviourState
 {
     private List<Water> allWater = new List<Water>();
-    private Water waterFinding;
+    public Water waterFinding;
     
     public override void Enter() {
         Debug.Log("Enter LookForFood");

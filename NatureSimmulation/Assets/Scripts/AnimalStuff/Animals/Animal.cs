@@ -46,8 +46,8 @@ public class Animal : MonoBehaviour
     [SerializeField] private Vector3 force;
     
     //State machine bits
-    [SerializeField] private BehaviourState currentState;
-    [SerializeField] private BehaviourState previousState;
+    public BehaviourState currentState;
+    public BehaviourState previousState;
 
     private void Awake() {
         movementBehaviours = GetComponents<SteeringBehaviour>().ToList();
@@ -55,6 +55,7 @@ public class Animal : MonoBehaviour
 
     public void Init() {
         StateMachine(GetComponent<Behaviour_Wander>());
+        // StateMachine(GetComponent<Behaviour_Die>());
        
 
         StartCoroutine(DecayStats());
@@ -103,6 +104,10 @@ public class Animal : MonoBehaviour
         if (currentState != null) {
             currentState.Think();
         }
+        
+        if (health <= 0 && currentState != GetComponent<Behaviour_Die>()) {
+            StateMachine(GetComponent<Behaviour_Die>());
+        }
     }
     
     //Check stats to see if we need food
@@ -112,10 +117,11 @@ public class Animal : MonoBehaviour
             hungry = hunger < 33;
             thirsty = thirst < 33;
         }
+
         hurt = health < 50;
 
         //Decide which states to enter
-        if (hungry && !(currentState == GetComponent<Behaviour_LookForFood>() && currentState == GetComponent<Behaviour_Hunting>())) {
+    if (hungry && !(currentState == GetComponent<Behaviour_LookForFood>() && currentState == GetComponent<Behaviour_Hunting>())) {
             //Change to looking for food
             if (favouredFood == Food.FoodType.Animal) {
                 StateMachine(GetComponent<Behaviour_Hunting>());   
@@ -130,9 +136,6 @@ public class Animal : MonoBehaviour
             StateMachine(GetComponent<Behaviour_LookForWater>());
             return;
         }
-        if (health <= 0 && currentState != GetComponent<Behaviour_Die>()) {
-            StateMachine(GetComponent<Behaviour_Die>());
-        }
 
         if (currentLoneliness <= maxLoneliness * 0.25f && groupingAnimal) {
             //Enter looking for group stuff 
@@ -143,11 +146,15 @@ public class Animal : MonoBehaviour
     public void Eating(float amt) {
         hunger += amt;
         hunger = Mathf.Clamp(hunger, 0, 100);
+        health += amt;
+        health = Mathf.Clamp(health, 0, 100);
     }
 
     public void Drinking(float amt) {
         thirst += amt;
         thirst = Mathf.Clamp(thirst, 0, 100);
+        health += amt;
+        health = Mathf.Clamp(health, 0, 100);
     }
 
     
@@ -173,17 +180,23 @@ public class Animal : MonoBehaviour
     //IEnumerator used for decaying the stats of the animal
     private IEnumerator DecayStats() {
         yield return new WaitForSeconds(decayDelay);
+
+        if (hungry || thirsty) {
+            health -= decayAmt;
+        }
+
         hunger -= decayAmt * hungerDecayMulti;
         thirst -= decayAmt * thirstDecayMulti;
         currentLoneliness -= decayAmt * lonelinessDecayMulti;
+        decayCor = null;
         decayCor = StartCoroutine(DecayStats());
         AnalyzeStats();
     }
 
     public void ToggleDecay(bool decay) {
-        if (decay) {
+        if (decay && decayCor == null) {
             decayCor = StartCoroutine(DecayStats());
-        } else {
+        } else if(decayCor != null && !decay){ 
             StopCoroutine(decayCor);
         }
     }

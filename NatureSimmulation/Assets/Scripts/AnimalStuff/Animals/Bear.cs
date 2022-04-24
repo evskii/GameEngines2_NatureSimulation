@@ -8,7 +8,7 @@ public class Bear : Animal
 		hunger = Random.Range(75, 100);
 		thirst = Random.Range(75, 100);
 		decayDelay = Random.Range(2f, 3f);
-		animalSize = 50;
+		animalSize = 100;
 		hungerDecayMulti = Random.Range(0.9f, 1.1f);
 		thirstDecayMulti = Random.Range(0.9f, 1.1f);
 

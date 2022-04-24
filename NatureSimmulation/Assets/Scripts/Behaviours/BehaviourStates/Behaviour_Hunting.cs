@@ -38,7 +38,7 @@ public class Behaviour_Hunting : BehaviourState
 		Debug.Log("LET THE HUNT BEGIN");
 		//Stamina shit
 		newMaxSpeed = animal.maxSpeed * 1.75f;
-		Debug.Log(newMaxSpeed);
+		// Debug.Log(newMaxSpeed);
 		currentStamina = maxStamina;
 		preservedMaxSpeed = animal.maxSpeed;
 		animal.maxSpeed = newMaxSpeed;

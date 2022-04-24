@@ -12,6 +12,7 @@ public class Behaviour_FollowLeader : BehaviourState
 		
 	}
 	public override void Exit() {
-		
+		GetComponent<Behaviour_LookingForGroup>().groupToJoin.Leave(animal);
+		GetComponent<OffsetPursue>().enabled = false;
 	}
 }

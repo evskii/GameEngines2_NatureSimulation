@@ -13,6 +13,8 @@ public class Behaviour_LookingForGroup : BehaviourState
 	
 	//Find groups that are nearby, otherwise create my own
 	public override void Enter() {
+		//Find a group to join
+		groupToJoin = null;
 		var groupsInScene = FindObjectsOfType<Group>();
 		Group closestGroup = null;
 		foreach (var group in groupsInScene) {
@@ -32,12 +34,13 @@ public class Behaviour_LookingForGroup : BehaviourState
 				groupToJoin = closestGroup;
 			} 
 		}
-		else {
+		else { //Create new group if there is none
 			CreateNewGroup();
 		}
+		
+		//reneable decay and movement
 		animal.move = true;
 		animal.ToggleDecay(true);
-		
 	}
 
 	private void CreateNewGroup() {
@@ -54,24 +57,15 @@ public class Behaviour_LookingForGroup : BehaviourState
 
 			if (Vector3.Distance(transform.position, groupToJoin.transform.position) < 10) {
 				groupToJoin.Enter(animal);
-				Debug.Log(groupToJoin.groupLeader);
+				//Initialize offsetpursue using new group 
 				GetComponent<OffsetPursue>().Init(groupToJoin.groupLeader);	
 				animal.StateMachine(GetComponent<Behaviour_FollowLeader>());
-				
 			}
 		}
 	}
 	
 	
 	public override void Exit() {
-		groupToJoin = null;
 	}
 
-	// private void OnDrawGizmos() {
-	// 	Gizmos.color = Color.green;
-	// 	if (animal != null) {
-	// 		Gizmos.DrawWireSphere(transform.position, animal.groupFindRange);
-	// 	}
-	// 	
-	// }
 }

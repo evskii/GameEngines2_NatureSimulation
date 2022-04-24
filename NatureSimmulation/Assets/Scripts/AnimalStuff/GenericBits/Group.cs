@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 using UnityEditor.Build;
 
@@ -14,14 +15,23 @@ public class Group : MonoBehaviour
     public void Enter(Animal toEnter) {
         if (!animalsInGroup.Contains(toEnter)) {
             animalsInGroup.Add(toEnter);
-            
         }
     }
 
     public void Leave(Animal toLeave) {
         if (animalsInGroup.Contains(toLeave)) {
-            
-            animalsInGroup.Remove(toLeave);
+            if (groupLeader == toLeave) {
+                animalsInGroup.Remove(toLeave);
+
+                if (animalsInGroup.Count > 0) {
+                    var group = animalsInGroup[0].gameObject.AddComponent<Group>();
+                    group.animalsInGroup = animalsInGroup;
+                    group.groupLeader = animalsInGroup[0];
+                    Destroy(GetComponent<Group>());
+                }
+            } else {
+                animalsInGroup.Remove(toLeave);
+            }
         }
     }
 
