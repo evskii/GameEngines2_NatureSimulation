@@ -15,6 +15,13 @@ The final submission will be a Planet Earth style video where you get a look at 
 - Created the base project.
 - Imported 3D models for a small selection of animals.
 - Created a movement script using Seek, Arrive and Path Following.
+- Created SteeringBehaviour and StateBehaviour classes.
+- Implemented SteeringBehaviour based movement system for base Animal class.
+- Implemented StateMachine for StateBehaviour on base Animal class.
+- Created a series of steering and state behaviours that run between eachother.
+- Created stats and food/water system for aniamls to survive.
+- Attempted terrain generation, but resorted to using pre packaged models instead.
+- Created hunting system for predators that hunt/kill their food.
 
 ## Final Video Storyboard:
 The video idea I have is a Planet Earth style documentary where there are scenes displaying animal interactions in different ways as if recorded for an episode of the show.  
@@ -27,3 +34,4 @@ The video idea I have is a Planet Earth style documentary where there are scenes
 
 ## References:
 Wild Animals: https://free-game-assets.itch.io/free-wild-animal-3d-low-poly-models
+Environment Assets: https://www.kenney.nl/assets/nature-kit
