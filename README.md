@@ -23,6 +23,10 @@ The final submission will be a Planet Earth style video where you get a look at 
 - Attempted terrain generation, but resorted to using pre packaged models instead.
 - Created hunting system for predators that hunt/kill their food.
 
+## States
+![image](https://user-images.githubusercontent.com/55562147/165130155-436cc9bb-0e0f-4a20-96d4-595f467f7ee9.png)
+
+
 ## Final Video Storyboard:
 The video idea I have is a Planet Earth style documentary where there are scenes displaying animal interactions in different ways as if recorded for an episode of the show.  
 ### Sample Shots:
