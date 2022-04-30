@@ -39,3 +39,4 @@ The video idea I have is a Planet Earth style documentary where there are scenes
 ## References:
 Wild Animals: https://free-game-assets.itch.io/free-wild-animal-3d-low-poly-models  
 Environment Assets: https://www.kenney.nl/assets/nature-kit
+Skybox: https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353
