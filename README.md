@@ -23,11 +23,8 @@ The final submission will be a Planet Earth style video where you get a look at 
 - Attempted terrain generation, but resorted to using pre packaged models instead.
 - Created hunting system for predators that hunt/kill their food.
 
-## States
-![image](https://user-images.githubusercontent.com/55562147/165130155-436cc9bb-0e0f-4a20-96d4-595f467f7ee9.png)
 
-
-## Final Video Storyboard:
+## Planned Video Storyboard:
 The video idea I have is a Planet Earth style documentary where there are scenes displaying animal interactions in different ways as if recorded for an episode of the show.  
 ### Sample Shots:
 | **Sketch** | **Idea** |
@@ -35,6 +32,9 @@ The video idea I have is a Planet Earth style documentary where there are scenes
 | ![Bushesh](https://user-images.githubusercontent.com/55562147/155888180-005858a6-77f8-4fe7-8405-dca6f475dccf.jpg) | The first shot idea I have is as if you are in the bushes watching an interaction from a far. The interaction I've drawn is two deer at a lake drinking. |
 | ![Helicopter](https://user-images.githubusercontent.com/55562147/155888213-b7098b1b-7d6e-4554-8b9d-63b7a657c61c.jpg) | The second shot idea I have is from a helicopter that is flying over one of the biomes. It looks down and you can see several different species wandering around and possible a predator/prey interaction also. |
 | ![POV](https://user-images.githubusercontent.com/55562147/155888228-c800d242-e396-44b1-b809-63e2cd29acac.jpg) | The thirtd shot idea I have is from the POV of one of the animals. This doesn't massively fit the Planet Earth documentary idea but I think it would be an interesting shot. |
+
+## States
+![image](https://user-images.githubusercontent.com/55562147/165130155-436cc9bb-0e0f-4a20-96d4-595f467f7ee9.png)
 
 ## References:
 Wild Animals: https://free-game-assets.itch.io/free-wild-animal-3d-low-poly-models  
