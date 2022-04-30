@@ -33,10 +33,11 @@ The video idea I have is a Planet Earth style documentary where there are scenes
 | ![Helicopter](https://user-images.githubusercontent.com/55562147/155888213-b7098b1b-7d6e-4554-8b9d-63b7a657c61c.jpg) | The second shot idea I have is from a helicopter that is flying over one of the biomes. It looks down and you can see several different species wandering around and possible a predator/prey interaction also. |
 | ![POV](https://user-images.githubusercontent.com/55562147/155888228-c800d242-e396-44b1-b809-63e2cd29acac.jpg) | The thirtd shot idea I have is from the POV of one of the animals. This doesn't massively fit the Planet Earth documentary idea but I think it would be an interesting shot. |
 
-## States
-![image](https://user-images.githubusercontent.com/55562147/165130155-436cc9bb-0e0f-4a20-96d4-595f467f7ee9.png)
+## Behaviours
+![image](https://user-images.githubusercontent.com/55562147/165130155-436cc9bb-0e0f-4a20-96d4-595f467f7ee9.png)  
+Above is a flow chart of each animal's State Machine and how they interacted with eachother. There are two main things in the game that change an animals state machine. The first is if they eat Animals or Resources available in the world. If they eat animals then they have a hunting state which makes them hunt for an animal smaller than them to kill and eat. The other is if the animal is a pack animal or not. If they like to be in packs then they have a loneliness stat that depletes over time and when it gets low enough they either create a new group or join an existing one for their species.
 
 ## References:
 Wild Animals: https://free-game-assets.itch.io/free-wild-animal-3d-low-poly-models  
-Environment Assets: https://www.kenney.nl/assets/nature-kit
-Skybox: https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353
+Environment Assets: https://www.kenney.nl/assets/nature-kit  
+Skybox: https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353  
