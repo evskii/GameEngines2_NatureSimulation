@@ -54,6 +54,12 @@ Another larger behaviour is the [LookForGroup](https://github.com/evskii/GameEng
 ### Terrain Generation
 I attempted a [terrain generation](https://github.com/evskii/GameEngines2_NatureSimulation/blob/main/NatureSimmulation/Assets/Scripts/TerrainGeneration/TerrainGenerator.cs) system based on what we had learned in class. I first generated a large plane with perlin noise but this proved too bumpy or too plane and there was no inbetween. I looked into seeded perlin noise but it was something that I would probably do if I had more time. I then changed it so I would make a bunch of smaller planes that slot together. I had to write into the generation code to have all of the borders at 0 so putting the smaller planes together would work better but this looked awful. I then added in a skirt that would lerp from 0 into the perlin noise accross a border (width set in the inspector) which started to look better. My FPS started to take a hit though and I went back to just using a flat plane and imported models since that had the best performance.
 
+## Final Video
+
+
+https://user-images.githubusercontent.com/55562147/166160956-ffe06602-3fe9-45cd-8c2e-1864071f99ee.mp4
+
+
 
 ## References:
 Wild Animals: https://free-game-assets.itch.io/free-wild-animal-3d-low-poly-models  
