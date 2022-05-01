@@ -41,8 +41,11 @@ public class Behaviour_Wander : BehaviourState
     }
     
     private Vector3 GetRandomPosition(float minDistance, float maxDistance) {
+        AnimalSpawner spawner = FindObjectOfType<AnimalSpawner>();
         var x = Random.Range(transform.position.x + minDistance, transform.position.x + maxDistance);
+        x = Mathf.Clamp(x, -spawner.mapWidth / 2, spawner.mapWidth / 2);
         var z = Random.Range(transform.position.z + minDistance, transform.position.z + maxDistance);
+        z = Mathf.Clamp(z, -spawner.mapHeight / 2, spawner.mapHeight / 2);
         var rawPos = new Vector3(x, transform.position.y, z);
         var finalPos = Vector3.zero;
         //Raycast to make sure its not under ground

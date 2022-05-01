@@ -8,7 +8,9 @@ using UnityEngine.PlayerLoop;
 public class Behaviour_Die : BehaviourState
 {
     private Food food;
-    
+
+    private int decayTime = 15;
+
     public override void Enter() {
         //Animal bits (redundant)
         animal.ToggleDecay(false);
@@ -23,6 +25,8 @@ public class Behaviour_Die : BehaviourState
         //Handle mesh when die
         var mesh = GetComponentInChildren<SkinnedMeshRenderer>();
         mesh.material.color = Color.red;
+        
+        transform.Rotate(0, 0, 90);
 
         //Remove components
         animal.enabled = false;
@@ -43,10 +47,14 @@ public class Behaviour_Die : BehaviourState
             var waterSource = GetComponent<Behaviour_LookForWater>().waterFinding;
             waterSource.Exiting(animal);
         }
+
+        Destroy(gameObject, decayTime);
     }
     public override void Think() {
         
     }
+
+    
     public override void Exit() {
         
     }
